@@ -1,0 +1,4 @@
+.venv/
+01-manufacturing-erp-data-warehouse/data/extracted
+__pycache__/ 
+*.pyc
