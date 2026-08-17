@@ -1,0 +1,196 @@
+// Following is the code for balanced_tree database schema
+
+Table raw_salesorderheader {
+    salesorderid NUMBER PK
+    revisionnumber NUMBER
+    orderdate TIMESTAMP
+    duedate TIMESTAMP
+    shipdate TIMESTAMP
+    status NUMBER
+    onlineorderflag BOOLEAN
+    purchaseordernumber VARCHAR
+    accountnumber VARCHAR
+    customerid NUMBER
+    salespersonid NUMBER
+    territoryid NUMBER
+    billtoaddressid NUMBER
+    shiptoaddressid NUMBER
+    shipmethodid NUMBER
+    creditcardid NUMBER
+    creditcardapprovalcode VARCHAR
+    currencyrateid NUMBER
+    subtotal FLOAT
+    taxamt FLOAT
+    freight FLOAT
+    totaldue FLOAT
+}
+
+Table raw_product {
+    productid NUMBER PK
+    name VARCHAR
+    productnumber VARCHAR
+    makeflag BOOLEAN
+    finishedgoodsflag BOOLEAN
+    color VARCHAR
+    safetystocklevel NUMBER
+    reorderpoint NUMBER
+    standardcost FLOAT
+    listprice FLOAT
+    size VARCHAR
+    sizeunitmeasurecode VARCHAR
+    weightunitmeasurecode VARCHAR
+    weight NUMBER
+    daystomanufacture NUMBER
+    productline VARCHAR
+    class VARCHAR
+    style VARCHAR
+    productsubcategoryid NUMBER
+    productmodelid NUMBER
+    sellstartdate DATE
+    sellenddate DATE
+    discontinueddate DATE
+}
+
+Table raw_customer {
+    customerid NUMBER PK
+    personid NUMBER
+    storeid NUMBER
+    territoryid NUMBER
+}
+
+Table raw_salesorderdetail {
+    salesorderid NUMBER 
+    salesorderdetailid NUMBER PK
+    carriertrackingnumber VARCHAR
+    orderqty NUMBER
+    productid NUMBER
+    specialofferid NUMBER
+	  unitprice  FLOAT
+    unitpricediscount FLOAT
+}
+
+Table raw_productinventory {
+    productid NUMBER
+    locationid NUMBER
+    shelf VARCHAR
+    bin NUMBER
+    quantity NUMBER
+}
+
+Table raw_productsubcategory {
+    productsubcategoryid NUMBER PK
+    productcategoryid NUMBER 
+}
+
+Table raw_purchaseorderdetail {
+    purchaseorderid NUMBER 
+    purchaseorderdetailid NUMBER PK
+    duedate DATE
+    orderqty NUMBER
+    productid NUMBER
+    unitprice FLOAT
+    receivedqty NUMBER
+    rejectedqty NUMBER
+}
+
+Table raw_vendor {
+    businessentityid NUMBER PK
+    accountnumber VARCHAR
+    name VARCHAR
+    creditrating NUMBER
+    preferredvendorstatus BOOLEAN
+    activeflag BOOLEAN
+}
+
+Table raw_purchaseorderheader {
+    purchaseorderid NUMBER PK
+    revisionnumber NUMBER
+    status NUMBER
+    employeeid NUMBER
+    vendorid NUMBER
+    shipmethodid NUMBER
+    orderdate DATE
+    duedate DATE
+    subtotal FLOAT
+    taxamt FLOAT
+    freight FLOAT
+}
+
+Table raw_workorder {
+    workorderid NUMBER PK
+    productid NUMBER 
+    orderqty NUMBER
+    scrappedqty NUMBER
+    startdate DATE
+    enddate DATE
+    duedate DATE
+    scrapreasonid NUMBER
+}
+
+Table raw_workorderrouting {
+    workorderid NUMBER 
+    productid NUMBER 
+    operationsequence NUMBER
+    locationid NUMBER
+    scheduledstartdate DATE
+    scheduledenddate DATE
+    actualstartdate DATE
+    actualenddate DATE
+    actualresourcehrs FLOAT
+    plannedcost FLOAT
+    actualcost FLOAT
+}
+
+Table raw_billofmaterials {
+    billofmaterialsid NUMBER PK
+    productassemblyid NUMBER 
+    componentid NUMBER 
+    startdate DATE
+    enddate DATE
+    unitmeasurecode VARCHAR
+    bomlevel NUMBER
+    perassemblyqty FLOAT
+}
+
+Table raw_location {
+    locationid NUMBER PK
+    name VARCHAR
+    availability NUMBER
+}
+
+Table raw_productcategory {
+    productcategoryid NUMBER PK
+    name VARCHAR
+}
+
+
+
+// For defining relationships
+Ref: raw_salesorderheader.customerid > raw_customer.customerid
+Ref: raw_salesorderheader.territoryid > raw_location.locationid
+
+Ref: raw_salesorderdetail.salesorderid > raw_salesorderheader.salesorderid
+Ref: raw_salesorderdetail.productid > raw_product.productid
+
+Ref: raw_product.productsubcategoryid > raw_productsubcategory.productsubcategoryid
+
+Ref: raw_productsubcategory.productcategoryid > raw_productcategory.productcategoryid
+
+Ref: raw_productinventory.productid > raw_product.productid
+Ref: raw_productinventory.locationid > raw_location.locationid
+
+Ref: raw_purchaseorderheader.vendorid > raw_vendor.businessentityid
+
+Ref: raw_purchaseorderdetail.purchaseorderid > raw_purchaseorderheader.purchaseorderid
+Ref: raw_purchaseorderdetail.productid > raw_product.productid
+
+Ref: raw_workorder.productid > raw_product.productid
+
+Ref: raw_workorderrouting.workorderid > raw_workorder.workorderid
+Ref: raw_workorderrouting.productid > raw_product.productid
+Ref: raw_workorderrouting.locationid > raw_location.locationid
+
+Ref: raw_billofmaterials.productassemblyid > raw_product.productid
+Ref: raw_billofmaterials.componentid > raw_product.productid
+
+Ref: raw_customer.territoryid > raw_location.locationid

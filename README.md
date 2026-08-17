@@ -5,3 +5,4 @@ PROJECT 1
 ERP → Cloud ingestion → Snowflake DWH
                     ↓
              Modeling + SQL
+-- Loaded 14 tables from Production, Purchasing, and Sales.
