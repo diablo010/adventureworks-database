@@ -1,4 +1,4 @@
-// Following is the code for balanced_tree database schema
+// Following is the code for adventureworks database
 
 Table raw_salesorderheader {
     salesorderid NUMBER PK
