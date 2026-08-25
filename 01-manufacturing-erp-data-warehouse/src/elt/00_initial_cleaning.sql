@@ -77,4 +77,5 @@ drop column modifieddate cascade;
 
 -- location table
 alter table production.location
+drop column costrate cascade,
 drop column modifieddate cascade;

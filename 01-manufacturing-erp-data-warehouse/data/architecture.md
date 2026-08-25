@@ -1,4 +1,4 @@
-                  AdventureWorks ERP
+    AdventureWorks OLTP Database by Microsoft
                          │
                          ▼
                     PostgreSQL
@@ -27,7 +27,7 @@
               │ Facts + Dimensions  │
               └──────────┬──────────┘
                          │
-              ┌──────────┼──────────┐
-              ▼          ▼          ▼
-            Sales     Inventory   Production
-             Mart        Mart        Mart
+     ┌───────────┌────────────┐──────────┐
+     ▼           ▼            ▼          ▼
+   Sales     Purchasing   Production   Cross-domain
+Analytics    Analytics     Analytics    Analytics

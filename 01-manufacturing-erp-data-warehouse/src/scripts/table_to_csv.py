@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from pathlib import Path
 
 engine = create_engine(
-    "postgresql+psycopg2://postgres:192837@localhost:5432/adventure_works"
+    "postgresql+psycopg2://postgres:<password>@localhost:5432/adventure_works"
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2] # resolve() -> gives absolute path   # .parents[2] -> 01-manufacturing
