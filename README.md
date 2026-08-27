@@ -39,6 +39,7 @@ AdventureWorks ERP Database
 * Created Bronze and Silver layers.
 * Built dimensional models using fact and dimension tables.
 * Added SQL-based analytics on top of the warehouse.
+* Connected the Snowflake dimensional warehouse to Power BI for visualization.
 
 ### Data Domains
 
@@ -106,6 +107,19 @@ Cross-domain
 * Products with high production but low sales
 * Revenue, purchase spend and production volume by month
 
+## Power BI Dashboard
+
+The Snowflake Gold layer is connected to Power BI to create an interactive ERP analytics dashboard.
+
+
+| Executive Overview | Sales Analysis |
+|---|---|
+| [![Overview](01-manufacturing-erp-data-warehouse/src/dashboard/screenshots/overview.png)](#executive-overview) | [![Sales](01-manufacturing-erp-data-warehouse/src/dashboard/screenshots/sales.png)](#sales-analysis) |
+
+| Purchasing Analysis | Production Analysis |
+|---|---|
+| [![Procurement](01-manufacturing-erp-data-warehouse/src/dashboard/screenshots/purchasing.png)](#purchasing-analysis) | [![Production](01-manufacturing-erp-data-warehouse/src/dashboard/screenshots/production.png)](#production-analysis) |
+
 ## Tech Stack
 
 * **Database:** PostgreSQL / AdventureWorks
@@ -114,9 +128,9 @@ Cross-domain
 * **Ingestion:** Snowpipe
 * **Transformation:** SQL
 * **Modeling:** Dimensional Modeling
+* **Visualization**: Power BI
 * **Version Control:** Git / GitHub
-
 
 ## Project Outcome
 
-A cloud-based dimensional ERP data warehouse in Snowflake, transforming operational AdventureWorks data into structured, analytics-ready fact and dimension tables for sales, procurement, inventory, product, vendor, and production analysis.
+A cloud-based dimensional ERP data warehouse in Snowflake, transforming operational AdventureWorks data into structured, analytics-ready fact and dimension tables for sales, procurement, inventory, product, vendor, and production analysis, with Power BI dashboards for business reporting.

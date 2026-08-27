@@ -2,3 +2,4 @@
 01-manufacturing-erp-data-warehouse/data/extracted
 __pycache__/ 
 *.pyc
+powerbi.txt

@@ -99,3 +99,14 @@ with top3_products as (
 select category_name, product_name, total_revenue
 from top3_products
 where rank <= 3;
+
+-- 10. Total revenue by category
+select 
+    dp.product_category_id,
+    dp.category_name,
+    sum(net_sales) as total_revenue
+from adventureworks_dw.gold.fact_sales fs
+left join adventureworks_dw.gold.dim_product dp
+on fs.product_key = dp.product_key
+group by dp.product_category_id, dp.category_name
+order by dp.product_category_id, dp.category_name;
