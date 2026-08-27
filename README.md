@@ -13,6 +13,8 @@ An end-to-end ERP data engineering project using the Microsoft AdventureWorks da
 ```text
 AdventureWorks ERP Database
           ↓
+   PostgreSQL Database
+          ↓
    Cloud File Storage
           ↓
       Snowflake
@@ -49,6 +51,48 @@ AdventureWorks ERP Database
 | Purchasing | Vendors and purchase transactions     |
 | Production | Products and manufacturing data       |
 | Inventory  | Stock and product availability        |
+
+## Project Structure
+```bash
+adventureworks-database/
+├── 01-manufacturing-erp-data-warehouse/
+│   ├── data
+│   │   ├── er-diagram
+│   │   │   ├── adventureworks_erd.png
+│   │   │   └── erd-code.txt
+│   │   └── architecture.md
+│   └── src
+│       ├── analytics
+│       │   ├── 01_sales.sql
+│       │   ├── 02_purchasing.sql
+│       │   ├── 03_production.sql
+│       │   └── 04_cross_domain.sql
+│       ├── dashboard
+│       │   ├── screenshots
+│       │   │   ├── overview.png
+│       │   │   ├── production.png
+│       │   │   ├── purchasing.png
+│       │   │   ├── sales.png
+│       │   └── adventureworks_erp_dashboard.pbix
+│       ├── elt
+│       │   ├── bronze
+│       │   │   ├── 01_setup.sql
+│       │   │   ├── 02_tables.sql
+│       │   │   └── 03_pipes.sql
+│       │   ├── gold
+│       │   │   ├── 01_facts.sql
+│       │   │   ├── 02_dimensions.sql
+│       │   │   └── dim_model.md
+│       │   ├── silver
+│       │   │   ├── 01_tables.sql
+│       │   └── 00_initial_cleaning.sql
+│       └── scripts
+│           └── table_to_csv.py    
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
 
 ## Warehouse Layers
 
